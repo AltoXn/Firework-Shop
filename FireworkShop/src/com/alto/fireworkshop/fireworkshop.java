@@ -8,6 +8,7 @@ public class fireworkshop extends JavaPlugin {
 	public void onDisable()
   {
   	System.out.println("[Warning] Disabled!");
+  	System.out.println("Ost blom! massor av ost!");
   }
 
 }
