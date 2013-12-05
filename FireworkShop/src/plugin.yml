@@ -13,4 +13,3 @@ permissions:
   firework.use:
     description: Allows access to /firework
     default: op
-    test hhehehheheh
