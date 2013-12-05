@@ -30,6 +30,7 @@ public class Firework {
 	
 	/**
 	 * Sets explosion data.
+	 * ostkakaaaaaaaaaaaa
 	 * 
 	 * @param item
 	 *            item
