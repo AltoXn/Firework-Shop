@@ -9,6 +9,7 @@ public class fireworkshop extends JavaPlugin {
   {
   	System.out.println("[Warning] Disabled!");
   	System.out.println("Ost blom! massor av ost!");
+  	System.out.println("mer ost! säg till när du märker detta :P");
   }
 
 }
