@@ -13,5 +13,3 @@ permissions:
   firework.use:
     description: Allows access to /firework
     default: op
-faacks
- jag är grym
