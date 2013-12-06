@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
  * in version 1.4.6 or newer.
  */
 public class Firework {
-	
+
 	/**
 	 * Checks if item is applicable.
 	 * 
@@ -21,16 +21,15 @@ public class Firework {
 	 */
 	public static boolean isApplicable(ItemStack item) {
 		switch (item.getTypeId()) {
-			case 401:
-				return true;
-			default:
-				return false;
+		case 401:
+			return true;
+		default:
+			return false;
 		}
 	}
-	
+
 	/**
-	 * Sets explosion data.
-	 * ostkakaaaaaaaaaaaa
+	 * Sets explosion data. ostkakaaaaaaaaaaaa
 	 * 
 	 * @param item
 	 *            item
@@ -39,9 +38,12 @@ public class Firework {
 	 * @return item stack
 	 */
 	public ItemStack setExplosions(ItemStack item, FireworkExplosion... exps) {
-		if (!isApplicable(item)) return null;
-		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack.asNMSCopy(item);
-		if (itemStack == null) return null;
+		if (!isApplicable(item))
+			return null;
+		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack
+				.asNMSCopy(item);
+		if (itemStack == null)
+			return null;
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
@@ -56,7 +58,7 @@ public class Firework {
 		itemStack.tag.setCompound("Fireworks", tag);
 		return CraftItemStack.asCraftMirror(itemStack);
 	}
-	
+
 	/**
 	 * Adds explosion data.
 	 * 
@@ -68,9 +70,12 @@ public class Firework {
 	 */
 	public static ItemStack addExplosion(ItemStack item,
 			FireworkExplosion explosion) {
-		if (!isApplicable(item)) return null;
-		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack.asNMSCopy(item);
-		if (itemStack == null) return null;
+		if (!isApplicable(item))
+			return null;
+		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack
+				.asNMSCopy(item);
+		if (itemStack == null)
+			return null;
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
@@ -78,7 +83,7 @@ public class Firework {
 			tag.getCompound("Fireworks").set("Explosions", new NBTTagList());
 			itemStack.tag = tag;
 		}
-		
+
 		tag = itemStack.tag.getCompound("Fireworks");
 		NBTTagList list = tag.getList("Explosions");
 		list.add(explosion.getTag());
@@ -86,7 +91,7 @@ public class Firework {
 		itemStack.tag.setCompound("Fireworks", tag);
 		return CraftItemStack.asCraftMirror(itemStack);
 	}
-	
+
 	/**
 	 * Gets explosions data.
 	 * 
@@ -95,9 +100,12 @@ public class Firework {
 	 * @return explosions
 	 */
 	public static FireworkExplosion[] getExplosions(ItemStack item) {
-		if (!isApplicable(item)) return null;
-		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack.asNMSCopy(item);
-		if (itemStack == null) return null;
+		if (!isApplicable(item))
+			return null;
+		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack
+				.asNMSCopy(item);
+		if (itemStack == null)
+			return null;
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
@@ -112,7 +120,7 @@ public class Firework {
 			exps[i] = new FireworkExplosion((NBTTagCompound) list.get(i));
 		return exps;
 	}
-	
+
 	/**
 	 * Sets height of flight.
 	 * 
@@ -123,22 +131,25 @@ public class Firework {
 	 * @return item
 	 */
 	public static ItemStack setFlight(ItemStack item, int flight) {
-		if (!isApplicable(item)) return null;
-		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack.asNMSCopy(item);
-		if (itemStack == null) return null;
+		if (!isApplicable(item))
+			return null;
+		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack
+				.asNMSCopy(item);
+		if (itemStack == null)
+			return null;
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
 			tag.setCompound("Fireworks", new NBTTagCompound());
 			itemStack.tag = tag;
 		}
-		
+
 		tag = itemStack.tag.getCompound("Fireworks");
 		tag.setByte("Flight", (byte) flight);
 		itemStack.tag.setCompound("Fireworks", tag);
 		return CraftItemStack.asCraftMirror(itemStack);
 	}
-	
+
 	/**
 	 * Gets height of the flight.
 	 * 
@@ -147,8 +158,10 @@ public class Firework {
 	 * @return height
 	 */
 	public static int getFlight(ItemStack item) {
-		if (!isApplicable(item)) return -1;
-		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack.asNMSCopy(item);
+		if (!isApplicable(item))
+			return -1;
+		net.minecraft.server.v1_6_R3.ItemStack itemStack = CraftItemStack
+				.asNMSCopy(item);
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
@@ -156,7 +169,7 @@ public class Firework {
 			itemStack.tag = tag;
 			return -1;
 		}
-		
+
 		tag = itemStack.tag.getCompound("Fireworks");
 		return tag.getByte("Flight");
 	}
