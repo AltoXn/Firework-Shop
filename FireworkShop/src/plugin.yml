@@ -1,8 +1,8 @@
-name: Firework
-main: com.github.exloki.firework.Fireworks
-version: 0.1.0
-description: Custom Fireworks Plugin [1.6.4]
-authors: [Exloki]
+name: Fireworkshop
+main: com.alto.fireworkshop.fireworkshop
+version: 1.7.2.1
+description: Custom Fireworks Plugin [1..7.2]
+authors: [Alto]
 website: http://www.exloki.com/
 commands:
   firework:
