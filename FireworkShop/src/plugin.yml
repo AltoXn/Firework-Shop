@@ -1,7 +1,7 @@
 name: Fireworkshop
-main: com.alto.fireworkshop.fireworkshop
+main: com.alto.fireworkshop.Main
 version: 1.7.2.1
-description: Custom Fireworks Plugin [1..7.2]
+description: Custom Fireworks Plugin [1.7.2]
 authors: [Alto]
 website: http://www.exloki.com/
 commands:

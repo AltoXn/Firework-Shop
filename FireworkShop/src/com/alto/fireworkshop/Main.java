@@ -7,9 +7,9 @@ import com.feildmaster.lib.configuration.PluginWrapper;
 import com.alto.fireworkshop.Commands;
 
 
-public class fireworkshop extends PluginWrapper {
+public class Main extends PluginWrapper {
 
-	private static fireworkshop plugin;
+	private static Main plugin;
 	public static final String Permission = "firework.use";
 
 	@Override
@@ -36,7 +36,7 @@ public class fireworkshop extends PluginWrapper {
 				.getConfig().getString("no-permission-message")));
 	}
 
-	public static fireworkshop getInstance() {
+	public static Main getInstance() {
 		return plugin;
 	}
 
