@@ -3,7 +3,8 @@ package com.alto.fireworkshop;
 import java.io.File;
 import java.util.ArrayList;
 
-import org.bukkit.ChatColor;
+
+import org.bukkit.*;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -26,8 +27,8 @@ public class Execute extends JavaPlugin{
 	
 	boolean trail ;
 	boolean flicker ;
-	String type ;
 	int height ;
+	String type ;
 	String coloursmess ;
 	String fademess ;
 	ArrayList<Integer> fade ;
@@ -63,7 +64,6 @@ public class Execute extends JavaPlugin{
 	public void check(Player sender)
 	{
 		getPlayerInfo(sender);
-		config.load();
 		sender.sendMessage(ChatColor.translateAlternateColorCodes('&',	trail ? "&6Trail: &7Enabled": "&6Trail: &7Disabled"));
 		sender.sendMessage(ChatColor.translateAlternateColorCodes('&',flicker ? "&6Twinkle: &7Enabled" : "&6Twinkle: &7Disabled"));	
 		if (type.equalsIgnoreCase("burst")) {
@@ -109,7 +109,6 @@ public class Execute extends JavaPlugin{
 	{
 		getPlayerInfo(sender);
 		
-		config.load();
 			if (!colours.isEmpty() && !(height > 3) && !(height < 0) && type != null) {
 				ItemStack item = new ItemStack( Material.FIREWORK);
 				ItemStack item2 = Firework.addExplosion(item, new FireworkExplosion(trail, translateType(type), colours, flicker, fade));
@@ -652,16 +651,31 @@ public class Execute extends JavaPlugin{
 	public void getPlayerInfo(Player sender){
 		trail = config.getBoolean(sender.getName() + ".trail");
 		flicker = config.getBoolean(sender.getName()+ ".flicker");
-		type = config.getString(sender.getName() + ".type");
 		height = config.getInt(sender.getName() + ".height");
-		colours = (ArrayList<Integer>) config.getIntegerList(sender.getName() + ".colours");
+		type = config.getString(sender.getName() + ".type");
 		coloursmess = config.getString(sender.getName()	+ ".coloursmess");
-		fade = (ArrayList<Integer>) config.get(sender.getName() + ".fade");
 		fademess = config.getString(sender.getName()	+ ".fademess");
+		fade = (ArrayList<Integer>) config.get(sender.getName() + ".fade");
+		colours = (ArrayList<Integer>) config.getIntegerList(sender.getName() + ".colours");
 		
 	}
+	
 
 	
+	public void checkFile(Player player) {		
+			if (config.get((player.getName()) + ".exists") == null) {
+				config.set(player.getName() + ".trail", "false");
+				config.set(player.getName() + ".flicker", "false");
+				config.set(player.getName() + ".type", "small");
+				config.set(player.getName() + ".height", "2");
+				config.set(player.getName() + ".colours",new ArrayList<Integer>());
+				config.set(player.getName() + ".coloursmess", "");
+				config.set(player.getName() + ".fade", new ArrayList<Integer>());
+				config.set(player.getName() + ".fademess", "");
+				config.set(player.getName() + ".exists", "true");
+				config.save();
+		}
+	}
 	
 
 

@@ -17,7 +17,7 @@ public class Main extends PluginWrapper {
 		plugin = this;
 
 		new Commands().onEnable();
-
+		saveDefaultConfig();
 		getCommand("firework").setExecutor(new Commands());
 
 		getServer().getPluginManager().registerEvents(new Commands(),this);
