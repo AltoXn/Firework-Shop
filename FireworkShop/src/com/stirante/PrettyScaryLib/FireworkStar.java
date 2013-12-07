@@ -33,7 +33,7 @@ public class FireworkStar {
 			itemStack.tag = tag;
 		}
 
-		tag.setCompound("Explosion", explosion.getTag());
+		tag.set("Explosion", explosion.getTag());
 		return CraftItemStack.asCraftMirror(itemStack);
 	}
 

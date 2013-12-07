@@ -29,7 +29,7 @@ public class Firework {
 	}
 
 	/**
-	 * Sets explosion data. ostkakaaaaaaaaaaaa
+	 * Sets explosion data.
 	 * 
 	 * @param item
 	 *            item
@@ -47,7 +47,7 @@ public class Firework {
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
-			tag.setCompound("Fireworks", new NBTTagCompound());
+			tag.set("Fireworks", new NBTTagCompound());
 			itemStack.tag = tag;
 		}
 		tag = itemStack.tag.getCompound("Fireworks");
@@ -55,7 +55,7 @@ public class Firework {
 		for (FireworkExplosion l : exps)
 			list.add(l.getTag());
 		tag.set("Explosions", list);
-		itemStack.tag.setCompound("Fireworks", tag);
+		itemStack.tag.set("Fireworks", tag);
 		return CraftItemStack.asCraftMirror(itemStack);
 	}
 
@@ -79,16 +79,17 @@ public class Firework {
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
-			tag.setCompound("Fireworks", new NBTTagCompound());
+			tag.set("Fireworks", new NBTTagCompound());
 			tag.getCompound("Fireworks").set("Explosions", new NBTTagList());
 			itemStack.tag = tag;
 		}
 
 		tag = itemStack.tag.getCompound("Fireworks");
-		NBTTagList list = tag.getList("Explosions");
+		int rader = tag.getCompound("Fireworks").getInt("Explosions");
+		NBTTagList list = tag.getList("Explosions",rader);
 		list.add(explosion.getTag());
 		tag.set("Explosions", list);
-		itemStack.tag.setCompound("Fireworks", tag);
+		itemStack.tag.set("Fireworks", tag);
 		return CraftItemStack.asCraftMirror(itemStack);
 	}
 
@@ -109,12 +110,13 @@ public class Firework {
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
-			tag.setCompound("Fireworks", new NBTTagCompound());
+			tag.set("Fireworks", new NBTTagCompound());
 			tag.getCompound("Fireworks").set("Explosions", new NBTTagList());
 			itemStack.tag = tag;
 		}
 		tag = itemStack.tag;
-		NBTTagList list = tag.getCompound("Fireworks").getList("Explosions");
+		int rader = tag.getCompound("Fireworks").getInt("Explosions");
+		NBTTagList list = tag.getCompound("Fireworks").getList("Explosions", rader);
 		FireworkExplosion[] exps = new FireworkExplosion[list.size()];
 		for (int i = 0; i < list.size(); i++)
 			exps[i] = new FireworkExplosion((NBTTagCompound) list.get(i));
@@ -140,13 +142,13 @@ public class Firework {
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
-			tag.setCompound("Fireworks", new NBTTagCompound());
+			tag.set("Fireworks", new NBTTagCompound());
 			itemStack.tag = tag;
 		}
 
 		tag = itemStack.tag.getCompound("Fireworks");
 		tag.setByte("Flight", (byte) flight);
-		itemStack.tag.setCompound("Fireworks", tag);
+		itemStack.tag.set("Fireworks", tag);
 		return CraftItemStack.asCraftMirror(itemStack);
 	}
 
@@ -165,7 +167,7 @@ public class Firework {
 		NBTTagCompound tag = itemStack.tag;
 		if (tag == null) {
 			tag = new NBTTagCompound();
-			tag.setCompound("Fireworks", new NBTTagCompound());
+			tag.set("Fireworks", new NBTTagCompound());
 			itemStack.tag = tag;
 			return -1;
 		}
