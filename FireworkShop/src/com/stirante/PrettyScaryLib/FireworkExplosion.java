@@ -2,7 +2,7 @@ package com.stirante.PrettyScaryLib;
 
 import java.util.ArrayList;
 
-import net.minecraft.server.v1_6_R3.NBTTagCompound;
+import net.minecraft.server.v1_7_R1.NBTTagCompound;
 
 /**
  * Class, that stores informations about firework's and firework's star
@@ -45,7 +45,7 @@ public class FireworkExplosion {
 	 * @param tag
 	 *            Compound
 	 */
-	public FireworkExplosion(net.minecraft.server.v1_6_R3.NBTTagCompound tag) {
+	public FireworkExplosion(net.minecraft.server.v1_7_R1.NBTTagCompound tag) {
 		if (tag.getByte("Trail") == 1)
 			setTrail(true);
 		else
